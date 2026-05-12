@@ -1,6 +1,8 @@
 'use client'
 
 import { Button, FieldError, Input, Label, TextArea, TextField, Select, ListBox, Card } from "@heroui/react";
+import { redirect } from "next/navigation";
+import { toast } from "react-toastify";
 
 const AdminPage = () => {
 
@@ -10,7 +12,7 @@ const AdminPage = () => {
         // Detect the form data & Make it an Object
         const formData = new FormData(e.target)
         const destination = Object.fromEntries(formData.entries())
-        console.log(destination)
+        // console.log(destination)
 
         // Req to the Server to store the Object in Database as a Doc
         const req = await fetch('http://localhost:5000/destinations', {
@@ -21,7 +23,13 @@ const AdminPage = () => {
             body: JSON.stringify(destination) // JS Object --> String Conversion
         })
         const data = await req.json(); // Data received as Json String --> JS Object
-        console.log(data)
+        // console.log(data)
+
+        // Toast & Revalidation
+        toast.success("Destination Added✅")
+        if (data.insertedId) {
+            redirect('/destinations')
+        }
     }
 
     return (

@@ -4,6 +4,8 @@ import { Button, Input, Label, Modal, Surface, TextField } from "@heroui/react";
 import { BiEditAlt } from "react-icons/bi";
 import { FieldError, TextArea, Select, ListBox } from "@heroui/react";
 import { useState } from "react";
+import { redirect } from "next/navigation";
+import { toast } from "react-toastify";
 
 
 export function EditModal({ destination }) {
@@ -11,20 +13,24 @@ export function EditModal({ destination }) {
 
     const [open, setOpen] = useState(false)
 
-    const onSubmit = async(e) => {
+    const onSubmit = async (e) => {
         e.preventDefault()
 
         const formData = new FormData(e.target);
         const destination = Object.fromEntries(formData.entries());
-        console.log(destination)
+        // console.log(destination)
 
         const req = await fetch(`http://localhost:5000/destinations/${_id}`, {
             method: "PATCH",
-            headers: {'Content-Type' : 'application/json'},
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(destination)
         })
         const data = await req.json();
-        console.log(data)
+        if (data.modifiedCount > 0) {
+            toast.success(`${destinationName} data updated!✅`)
+            redirect('/destinations')
+        }
+        // console.log(data)
 
         setOpen(false)
 
@@ -33,15 +39,15 @@ export function EditModal({ destination }) {
 
     return (
         <Modal isOpen={open} onOpenChange={setOpen}>
-            <div className="flex justify-end m-5">
-                <Button
-                    variant="outline"
-                    className="rounded-none"
-                    onPress={() => setOpen(true)}
-                >
-                    <BiEditAlt /> Edit
-                </Button>
-            </div>
+
+            <Button
+                variant="outline"
+                className="rounded-none"
+                onPress={() => setOpen(true)}
+            >
+                <BiEditAlt /> Edit
+            </Button>
+
             <Modal.Backdrop>
                 <Modal.Container placement="auto">
                     <Modal.Dialog className="sm:max-w-xl">
@@ -90,6 +96,10 @@ export function EditModal({ destination }) {
                                                 </Select.Trigger>
                                                 <Select.Popover>
                                                     <ListBox>
+                                                        <ListBox.Item id="Other" textValue="Other">
+                                                            Other
+                                                            <ListBox.ItemIndicator />
+                                                        </ListBox.Item>
                                                         <ListBox.Item id="Beach" textValue="Beach">
                                                             Beach
                                                             <ListBox.ItemIndicator />

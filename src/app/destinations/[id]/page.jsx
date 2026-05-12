@@ -1,13 +1,12 @@
+import { DeleteAlert } from "@/components/DeleteAlert";
 import { EditModal } from "@/components/EditModal";
-import { Button } from "@heroui/react";
 import Image from "next/image";
-import { BiEdit, BiEditAlt } from "react-icons/bi";
 import { FaCalendarAlt } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 
 const DestinationDetailsPage = async ({ params }) => {
     const { id } = await params;
-    console.log(id)
+    // console.log(id)
 
     const res = await fetch(`http://localhost:5000/destinations/${id}`);
     const data = await res.json()
@@ -18,7 +17,10 @@ const DestinationDetailsPage = async ({ params }) => {
         <section className="container mx-auto">
             <h2 className="text-center py-8 text-5xl font-semibold">Destination Details</h2>
 
-            <EditModal destination={data}></EditModal>
+            <div className="flex items-center gap-3 justify-end m-5">
+                <EditModal destination={data}></EditModal>
+                <DeleteAlert destination={data}></DeleteAlert>
+            </div>
 
             <div className="m-5">
                 <Image src={imageUrl} alt={destinationName} height={500} width={1000} className="mx-auto rounded-lg border-2 shadow-sm w-full h-180 object-cover"></Image>
