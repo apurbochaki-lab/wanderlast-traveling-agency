@@ -1,8 +1,10 @@
 import { Separator } from "@heroui/react";
+import Link from "next/link";
 
 const Banner = () => {
     return (
-        <div className="bg-[url('/assets/banner.png')] text-white  flex justify-between flex-col items-center  gap-5 h-150">
+        <div className="bg-[url('/assets/banner.png')] text-white flex flex-col items-center gap-5 h-150 mb-20">
+            {/* Middle Part */}
             <div className="p-10 text-center flex justify-center flex-col items-center gap-3.5 flex-1">
                 <h1 className="text-7xl">
                     Discover Your <br /> Next Adventure
@@ -14,9 +16,11 @@ const Banner = () => {
                 </p>
 
                 <div className="flex gap-5">
-                    <button className="uppercase bg-cyan-500 px-5 py-3 cursor-pointer">
-                        Explore Now
-                    </button>
+                    <Link href={"/destinations"}>
+                        <button className="uppercase bg-cyan-500 px-5 py-3 cursor-pointer">
+                            Explore Now
+                        </button>
+                    </Link>
 
                     <button className="uppercase px-5 py-3 bg-white/50 cursor-pointer">
                         View Destination
@@ -24,7 +28,7 @@ const Banner = () => {
                 </div>
             </div>
 
-            <div className=" bg-white/30 flex justify-between gap-5 w-full items-center">
+            <div className=" bg-white/30 flex flex-wrap justify-between gap-5 w-full items-center">
                 <div className="px-3">
                     <h3 className="text-sm">Location</h3>
                     <p className="text-xs">Address, City or Zip</p>
@@ -50,7 +54,6 @@ const Banner = () => {
                     <h3 className="text-sm">People</h3>
                     <p className="text-xs">5-10</p>
                 </div>
-
 
 
                 <div className="bg-cyan-500 py-2 px-4">

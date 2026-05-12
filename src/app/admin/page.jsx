@@ -34,9 +34,11 @@ const AdminPage = () => {
 
     return (
         <div onSubmit={onSubmit} className="container mx-auto py-10">
-            <Card className="w-3xl mx-auto border">
+
+            <h2 className="text-center text-3xl font-bold mb-5">Add New Destination</h2>
+            <Card className="max-w-3xl mx-auto border">
                 <form
-                    className="p-10 space-y-8"
+                    className="p-10 space-y-8 z-0"
                 >
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         {/* Destination Name */}

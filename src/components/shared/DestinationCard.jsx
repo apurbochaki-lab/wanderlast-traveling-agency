@@ -7,7 +7,7 @@ import { LuArrowUpRight } from "react-icons/lu";
 const DestinationCard = ({ d }) => {
     const { _id, category, country, departureDate, description, destinationName, duration, imageUrl, price } = d;
     return (
-        <div className="mt-10 max-w-[410px] mx-auto p-5 border-2 rounded-lg shadow-sm">
+        <div className="mt-10 max-w-[410px] mx-auto p-5 border-2 rounded-lg shadow-sm bg-white">
             <Image src={imageUrl} alt={destinationName} width={400} height={400} className="mx-auto rounded-lg h-50 object-cover border-2 shadow-sm"></Image>
 
             <div className="mt-5 space-y-2">

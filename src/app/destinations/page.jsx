@@ -8,16 +8,18 @@ const DestinationsPage = async () => {
     // console.log(destinationsData)
 
     return (
-        <section className="container mx-auto">
-            <div className="text-center py-10">
-                <h2 className="font-bold text-5xl mb-4">Explore All Destinations</h2>
-                <p>Find your perfect travel experience from our curated collection</p>
-            </div>
+        <section className="bg-gradient-to-br from-slate-50 via-blue-50 to-cyan-100">
+            <div className="container mx-auto">
+                <div className="text-center py-10">
+                    <h2 className="font-bold text-5xl mb-4">Explore All Destinations</h2>
+                    <p>Find your perfect travel experience from our curated collection</p>
+                </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5">
-                {
-                    destinationsData.map(d => <DestinationCard key={d._id} d={d}></DestinationCard>)
-                }
+                <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5 pb-40 m-5">
+                    {
+                        destinationsData.map(d => <DestinationCard key={d._id} d={d}></DestinationCard>)
+                    }
+                </div>
             </div>
         </section>
     );
