@@ -9,7 +9,7 @@ import { authClient } from '@/lib/auth-client';
 import { useRouter } from 'next/navigation';
 
 const Navbar = ({ session, refresh }) => {
-    console.log(session)
+    // console.log(session)
 
     const [open, setOpen] = useState(false);
     const sidebarRef = useRef(null);
