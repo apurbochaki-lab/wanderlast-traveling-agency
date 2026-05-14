@@ -1,8 +1,5 @@
 'use client'
 
-// import dns from "node:dns/promises"; 
-// dns.setServers(["1.1.1.1", "8.8.8.8"]); 
-
 import { authClient } from "@/lib/auth-client";
 import { Button, DateField, Label } from "@heroui/react";
 import { useState } from "react";
